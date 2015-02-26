@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>casing3D</class>
+ <widget class="QDialog" name="casing3D">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1059</width>
+    <height>633</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>套管成像 (鼠标控制：左键旋转 右键缩放 中键拉伸 滚轮深度)</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="nemo.qrc">
+    <normaloff>:/image/image/nemo.ico</normaloff>:/image/image/nemo.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QHBoxLayout" name="hGL" stretch="0">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="option" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>180</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="gbViewport">
+        <property name="title">
+         <string>样式</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hViewport">
+        <item>
+         <spacer name="hs1">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="viewtop">
+          <property name="text">
+           <string>顶视图  </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="viewfront">
+          <property name="text">
+           <string>前视图  </string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gbShow">
+        <property name="title">
+         <string>显示</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hShowTool" stretch="2,4,4">
+        <item>
+         <spacer name="hsTool">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showMFC">
+          <property name="text">
+           <string>MFC井径</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showMTD">
+          <property name="text">
+           <string>MTD测厚</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hShowData" stretch="2,4,4">
+        <item>
+         <spacer name="hsData">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showData">
+          <property name="text">
+           <string>数据</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showDep">
+          <property name="text">
+           <string>深度</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hShowGrid" stretch="2,4,4">
+        <item>
+         <spacer name="hsGrid">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showClip">
+          <property name="text">
+           <string>半管</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showApart">
+          <property name="text">
+           <string>分离</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="19,81">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="showBack">
+          <property name="text">
+           <string>黑背景</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gbDepth">
+        <property name="title">
+         <string>深度</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hDepthLength" stretch="2,1,7">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <spacer name="hs5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbllenth">
+          <property name="toolTip">
+           <string>单位：米/荧屏</string>
+          </property>
+          <property name="text">
+           <string>长度</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="dispLength">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+          <property name="minimum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>500.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>20.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hlDepthGoto" stretch="2,1,7">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <spacer name="hs9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>深度</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="depth">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="decimals">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hDepth">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <spacer name="hs8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QSlider" name="depSelect">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="pageStep">
+           <number>5</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hDepthAuto" stretch="35,65">
+        <item>
+         <spacer name="hs6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="depAuto">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>自动滚屏</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gbColor">
+        <property name="title">
+         <string>颜色</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hColortitle">
+        <item>
+         <widget class="QLabel" name="lblColorMFC">
+          <property name="text">
+           <string>MFC内径%</string>
+          </property>
+          <property name="margin">
+           <number>2</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblColorMTD">
+          <property name="text">
+           <string>MTD厚度%</string>
+          </property>
+          <property name="margin">
+           <number>2</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hColor">
+        <item>
+         <widget class="QTableWidget" name="mfcColor">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>(实测半径-原始半径) / 厚度</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+          <property name="cornerButtonEnabled">
+           <bool>false</bool>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>40</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>16</number>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>10</number>
+          </attribute>
+          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>差值</string>
+           </property>
+           <property name="foreground">
+            <brush brushstyle="NoBrush">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>颜色</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="mtdColor">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>实测厚度 / 原始厚度</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+          <property name="cornerButtonEnabled">
+           <bool>false</bool>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>40</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>16</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>差值</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="foreground">
+            <brush brushstyle="NoBrush">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>颜色</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="foreground">
+            <brush brushstyle="NoBrush">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hColorButton">
+        <item>
+         <spacer name="hs7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="colorOK">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>确定</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="colorReset">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>缺省</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="gbFile">
+        <property name="title">
+         <string>文件</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="files">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>120</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hFile">
+        <item>
+         <spacer name="hs2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="importLAS">
+          <property name="text">
+           <string>导入LAS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="saveBmp">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>保存图片</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="nemo.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>mfcColor</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_color_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>524</x>
+     <y>419</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>734</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mtdColor</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_color_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>419</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>727</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>depAuto</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_auto_depth()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorOK</sender>
+   <signal>clicked()</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_colorOk_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>735</x>
+     <y>502</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorReset</sender>
+   <signal>clicked()</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_colorReset_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>735</x>
+     <y>535</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveBmp</sender>
+   <signal>clicked()</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_savebmp_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>736</x>
+     <y>599</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>viewtop</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_viewport_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>538</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>740</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>viewfront</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_viewport_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>746</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>files</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_files_change()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>741</x>
+     <y>563</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showMFC</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>496</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>665</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showMTD</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>586</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>811</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showBack</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showData</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>543</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>829</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showClip</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>543</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>831</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showApart</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>165</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>depth</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_set_depth()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>694</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dispLength</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_depth_len_change()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>depSelect</sender>
+   <signal>actionTriggered(int)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_change_depth()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>606</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>688</x>
+     <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>importLAS</sender>
+   <signal>clicked()</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_import_las()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>733</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showDep</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>casing3D</receiver>
+   <slot>on_show_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>579</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>700</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>on_colorOk_click()</slot>
+  <slot>on_colorReset_click()</slot>
+  <slot>on_savebmp_click()</slot>
+  <slot>on_viewport_click()</slot>
+  <slot>on_grid_click()</slot>
+  <slot>on_set_depth()</slot>
+  <slot>on_files_change()</slot>
+  <slot>on_depth_len_change()</slot>
+  <slot>on_import_las()</slot>
+  <slot>on_color_click()</slot>
+  <slot>on_auto_depth()</slot>
+  <slot>on_show_click()</slot>
+  <slot>on_change_depth()</slot>
+ </slots>
+</ui>

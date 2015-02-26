@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="image">
+    <file>image/dory.ico</file>
+    <file>image/nemo.ico</file>
+    <file>image/up_arrow_disabled.png</file>
+    <file>image/down_arrow_disabled.png</file>
+    <file>image/linguist-check-obsolete.png</file>
+    <file>image/gowell.png</file>
+  </qresource>
+</RCC>
